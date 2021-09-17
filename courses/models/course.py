@@ -9,7 +9,10 @@ class Course(models.Model):
     thumbnail = models.ImageField(upload_to='files/thumbnail')
     date = models.DateTimeField(auto_now_add=True)
     resource = models.FileField(upload_to='files/resource')
-    lengtt = models.IntegerField(null=False)
+    length = models.IntegerField(null=False)
+
+    def __str__(self):
+        return self.name
      
 
 class CourseProperty(models.Model):

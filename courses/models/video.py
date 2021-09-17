@@ -7,6 +7,9 @@ class Video(models.Model):
     title = models.CharField(max_length=100,null=False)
     course = models.ForeignKey(Course, null = False, on_delete = models.CASCADE)
     serial_no = models.IntegerField(null=False)
-    video_id = models.CharField(max_length=20, null=False)
+    video_id = models.CharField(max_length=100, null=False)
     is_preview = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
     
