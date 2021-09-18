@@ -3,4 +3,8 @@
 {% block title %}Django{% endblock title %}
 
 {% block content %}
+<p> {{courses}} </p>
+{% for item in courses %}
+<h1>{{item}}, {{item.description}} {{item.discount}}</h1>
+{% endfor %}
 {% endblock content %}
