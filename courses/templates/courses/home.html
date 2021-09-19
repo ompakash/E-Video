@@ -1,4 +1,5 @@
 {% extends 'courses/base.html' %}
+{% load course_custom_tags %}
 
 {% block title %}Django{% endblock title %}
 
@@ -16,14 +17,17 @@
         {% for course in courses %}
         <div class="col mx-auto">
             <div class="card mx-auto" style="width: 18rem;">
-                <img class="card-img-top" src="static/images/galaxy.jpg" alt="...">
+                <img class="card-img-top" src="{{course.thumbnail.url}}" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{course.name}}</h5>
+                    
                     <p class="card-text m-0 p-0">
                         Save {{course.discount}}%
                         <br>
                         <span class="price">
-                            <del>₹ {{course.price}}</del> &nbsp; <span>₹ 199</span>
+                            <del>{{course.price|rupee}}</del> &nbsp; 
+                            
+                            <span>{% cal_sellprice course.price course.discount as value %} {{value|rupee}} </span>
                         </span>
                     </p>
 
