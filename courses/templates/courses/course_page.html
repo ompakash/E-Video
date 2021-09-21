@@ -1,0 +1,19 @@
+{% extends 'courses/base.html' %}
+{% load course_custom_tags %}
+
+{% block title %}Django{% endblock title %}
+
+{% block content %}
+
+<style>
+    .price {
+        font-size: 20px;
+    }
+</style>
+
+<div class="container-fluid">
+    <h6>Selected Course = {{slug}}</h6>
+
+</div>
+
+{% endblock content %}
