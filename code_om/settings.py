@@ -123,7 +123,7 @@ MEDIA_ROOT = BASE_DIR
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "courses/static",
 ]
 STATIC_ROOT = "static_root"
 
