@@ -1,0 +1,12 @@
+.price {
+    font-size: 20px;
+}
+
+.overflow-y-scroll{
+    overflow-y: scroll;
+}
+
+.active-video{
+    background-color: rgb(33, 35, 36);
+    color: antiquewhite;
+}

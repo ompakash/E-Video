@@ -1,18 +1,43 @@
 {% extends 'courses/base.html' %}
 {% load course_custom_tags %}
 {% load static %}
-{% block title %}Django{% endblock title %}
+
+{% block title %}
+Django
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'courses/css/scrollbar.css' %}">
+<link rel="stylesheet" href="{% static 'courses/css/common.css' %}">
+{% endblock css %}
+
+
+{% block js %}
+<!-- (w*9)/10 -->
+<script src={% static 'courses/js/course_page.js' %}></script>
+{% endblock js %}
 
 {% block content %}
 
 <style>
-    .price {
-        font-size: 20px;
+    a:hover{
+        text-decoration: none;
     }
 
-    #video_list{
-        overflow-y: scroll;
+    a{
+        color: rgb(153, 153, 153);
     }
+
+    .active-color-link{
+        color: rgb(206, 202, 196);
+    }
+    
+    .active-color-link:hover{
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+
+
 </style>
 
 <div class="container-fluid">
@@ -25,7 +50,7 @@
                 <div class="col-9">
                     <div class="mx-auto">
                         <iframe id="player" class="mx-auto" width="100%" height="315"
-                            src="https://www.youtube.com/embed/jMHcborMf0Q" title="YouTube video player" frameborder="0"
+                            src="https://www.youtube.com/embed/{{video.video_id}}" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
@@ -33,12 +58,17 @@
 
                 <!-- LECTURE LIST  -->
                 <div class="col-3">
-                        <ul id="video_list" class="list-group">
-                            {% for video in course.video_set.all %}
-                            <li class="list-group-item "><a href="#">{{video}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    
+                    <ul id="video_list" class="list-group overflow-y-scroll">
+                        {% for v in videos %}
+                        <li 
+                        class="list-group-item {% if v == video %} active-video {% endif %}">
+                        <a class="{% if v == video %} active-video-link {% endif %}" href="?lecture={{v.serial_no}}">
+                        {{v}}
+                        </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
 
                 </div>
             </div>
@@ -92,9 +122,5 @@
     </div>
 
 
-    <!-- (w*9)/10 -->
-
-
-    <script src={% static 'courses/js/course_page.js' %}></script>
 
     {% endblock content %}
