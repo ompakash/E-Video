@@ -7,8 +7,8 @@ from courses.views import home,coursePage,signup,login
 
 urlpatterns = [
     path('', home , name = "home"),
-    path('signup/', signup , name = "signup"),
-    path('login/', login , name = "login"),
+    path('signup', signup , name = "signup"),
+    path('login', login , name = "login"),
     path('course/<str:slug>', coursePage , name = "coursepage"),
 ]
 
