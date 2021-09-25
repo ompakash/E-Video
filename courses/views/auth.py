@@ -1,6 +1,7 @@
 from django.shortcuts import HttpResponse, redirect, render
 from courses.models import Course, Video
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout
 from courses.forms import RegistrationForm,LoginForm
 from django.views import View
 
@@ -35,4 +36,6 @@ class LoginView(View):
             return redirect("home")
         return render(request,template_name ="courses/login.html",context=context)
 
-    
+def signout(request):
+    logout(request)
+    return redirect("home")
