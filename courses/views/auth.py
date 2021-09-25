@@ -19,7 +19,5 @@ class SignupView(View):
         return render(request,template_name="courses/signup.html",context = { 'form' : form } )
 
 
-    
-
 def login(request):
     return render(request,template_name="courses/login.html")
