@@ -27,5 +27,12 @@ class LoginView(View):
         return render(request,template_name="courses/login.html",context=context)
 
     def post(self,request):
-        return HttpResponse("Login Form Submited")
+        form = LoginForm(request = request,data = request.POST)
+        context = {
+            'form':form
+        }
+        if(form.is_valid()):
+            return redirect("home")
+        return render(request,template_name ="courses/login.html",context=context)
+
     
