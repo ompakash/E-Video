@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse, redirect, render
 from courses.models import Course, Video
 from django.contrib.auth.forms import UserCreationForm
-from courses.forms import RegistrationForm
+from courses.forms import RegistrationForm,LoginForm
 from django.views import View
 
 
@@ -18,6 +18,14 @@ class SignupView(View):
                 return redirect('login')
         return render(request,template_name="courses/signup.html",context = { 'form' : form } )
 
+class LoginView(View):
+    def get(self,request):
+        form = LoginForm()
+        context = {
+            'form':form
+        }
+        return render(request,template_name="courses/login.html",context=context)
 
-def login(request):
-    return render(request,template_name="courses/login.html")
+    def post(self,request):
+        return HttpResponse("Login Form Submited")
+    
