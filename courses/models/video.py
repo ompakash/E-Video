@@ -1,8 +1,6 @@
 from django.db import models
 from courses.models import Course
 
-
-
 class Video(models.Model):
     title = models.CharField(max_length=100,null=False)
     course = models.ForeignKey(Course, null = False, on_delete = models.CASCADE)
