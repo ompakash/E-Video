@@ -9,6 +9,10 @@ login
 {% block content %}
 <div class="container">
 <br>
+{% if order is not None %}
+<h1 class="display-3">Showing Model</h1>
+{% endif %}
+<br>
 <div class="row">    
     <div class="col mx-auto">
         <div class="card ml-auto" style="width: 18rem;">
@@ -35,7 +39,7 @@ login
             <h2 >{{course.name}}</h2>
             <hr> 
             <p >Payable Amount: <br> <b>{% cal_sellprice course.price course.discount as value %} {{value|rupee}} </b></p>
-            <a class="btn btn-light border" href="#">Continue to Payment</a>
+            <a class="btn btn-light border" href="?action=create_payment">Continue to Payment</a>
         </div>
     </div>
 </div>
