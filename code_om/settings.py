@@ -131,3 +131,6 @@ STATIC_ROOT = "static_root"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+KEY_ID = 'rzp_test_q8X1NVmFRp2YUZ'
+KEY_SECRET = 'L4FN55YKTumWE8paIAD0v7o5'

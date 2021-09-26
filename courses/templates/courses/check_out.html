@@ -1,19 +1,43 @@
 {% extends 'courses/base.html' %}
+{% load static %}
 {% load course_custom_tags %}
 {% block title %}
 login
 {% endblock title %}
+<link rel="stylesheet" href="{% static 'courses/css/common.css' %}">
 
 {% block content %}
 <div class="container">
-<h1 class="display-1 alert">Check Out Page</h1>
-<hr>
-<h1>You are going to enroll {{course.name}}</h1>
-<div>
-    <form action="/login" method="post">
-        {% csrf_token %}
-    <input type="submit" value="Checkout">
-    </form>
+<br>
+<div class="row">    
+    <div class="col mx-auto">
+        <div class="card ml-auto" style="width: 18rem;">
+            <img class="card-img-top" src="{{course.thumbnail.url}}" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{course.name}}</h5>
+                
+                <p class="card-text m-0 p-0">
+                    Save {{course.discount}}%
+                    <br>
+                    <span class="price">
+                        <del>{{course.price|rupee}}</del> &nbsp; 
+                        
+                        <span>{% cal_sellprice course.price course.discount as value %} {{value|rupee}} </span>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div>
+            <h2 >{{course.name}}</h2>
+            <hr> 
+            <p >Payable Amount: <br> <b>{% cal_sellprice course.price course.discount as value %} {{value|rupee}} </b></p>
+            <a class="btn btn-light border" href="#">Continue to Payment</a>
+        </div>
+    </div>
 </div>
 </div>
 {% endblock content %}
